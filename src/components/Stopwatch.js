@@ -14,7 +14,9 @@ class Stopwatch extends Component {
 
   decrease() {
     const { decreaseTime, second } = this.props;
-    decreaseTime(second);
+    if (decreaseTime) {
+      decreaseTime(second);
+    }
   }
 
   render() {

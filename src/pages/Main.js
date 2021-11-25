@@ -71,7 +71,14 @@ class Main extends React.Component {
           second={ second }
           decreaseTime={ this.decreaseTime }
         /> : null }
-        <button onClick={ this.nextQuestion } type="button">Próxima</button>
+        <button
+          onClick={ this.nextQuestion }
+          hidden={ !click }
+          type="button"
+          data-testid="btn-next"
+        >
+          Próxima
+        </button>
       </div>
     );
   }

@@ -48,7 +48,7 @@ class Question extends React.Component {
           />
         )) }
         <span>
-          { click ? second : <Stopwatch
+          { click ? <Stopwatch second={ second } /> : <Stopwatch
             decreaseTime={ decreaseTime }
             second={ second }
           /> }
