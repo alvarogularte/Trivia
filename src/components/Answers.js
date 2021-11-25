@@ -9,6 +9,7 @@ class Answers extends React.Component {
         data-testid={ color === 'green' ? 'correct-answer' : `wrong-answer-${index}` }
         onClick={ click ? null : handleScore && handleClick }
         type="button"
+        disabled={ click }
         name={ answer }
         className={ click ? color : null }
       >

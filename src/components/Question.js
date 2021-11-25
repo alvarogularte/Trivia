@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Answers from './Answers';
+import Stopwatch from './Stopwatch';
 
 class Question extends React.Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class Question extends React.Component {
 
   render() {
     const { score } = this.state;
-    const { question, click, index, handleClick, allQuestions } = this.props;
+    const { question, click, index, handleClick,
+      allQuestions, second, decreaseTime } = this.props;
     return (
       <div>
         <span>{ score }</span>
@@ -45,6 +47,12 @@ class Question extends React.Component {
             click={ click }
           />
         )) }
+        <span>
+          { click ? second : <Stopwatch
+            decreaseTime={ decreaseTime }
+            second={ second }
+          /> }
+        </span>
       </div>
     );
   }
@@ -62,6 +70,8 @@ Question.propTypes = {
   index: PropTypes.number.isRequired,
   click: PropTypes.bool.isRequired,
   allQuestions: PropTypes.isRequired,
+  second: PropTypes.number.isRequired,
+  decreaseTime: PropTypes.func.isRequired,
 };
 
 export default Question;

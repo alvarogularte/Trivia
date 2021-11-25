@@ -12,10 +12,12 @@ class Main extends React.Component {
     this.randomizeArrays = this.randomizeArrays.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.decreaseTime = this.decreaseTime.bind(this);
 
     this.state = {
       index: 0,
       click: false,
+      second: 30,
       randomizedArrays: [],
     };
   }
@@ -28,18 +30,18 @@ class Main extends React.Component {
 
   randomizeArrays() {
     const { questionsFromState } = this.props;
-    const chato = 0.5;
-    const chatoo = -1;
+    const meio = 0.5;
+    const menosUm = -1;
     const randomizedArrays = questionsFromState.map((element) => (
       [...element.incorrect_answers, element.correct_answer].sort(() => (
-        (Math.random() > chato) ? 1 : chatoo))
+        (Math.random() > meio) ? 1 : menosUm))
     ));
     this.setState({ randomizedArrays });
   }
 
   nextQuestion() {
     const { index, click } = this.state;
-    this.setState({ index: index + 1, click: !click });
+    this.setState({ index: index + 1, click: !click, second: 30 });
   }
 
   handleClick() {
@@ -47,8 +49,15 @@ class Main extends React.Component {
     this.setState({ click: !click });
   }
 
+  decreaseTime(second) {
+    if (second === 0) {
+      return this.setState({ second: 0, click: true });
+    }
+    this.setState({ second: second - 1 });
+  }
+
   render() {
-    const { index, click, randomizedArrays } = this.state;
+    const { index, click, randomizedArrays, second } = this.state;
     const { questionsFromState } = this.props;
     return (
       <div>
@@ -59,6 +68,8 @@ class Main extends React.Component {
           index={ index }
           allQuestions={ randomizedArrays[index] }
           handleClick={ this.handleClick }
+          second={ second }
+          decreaseTime={ this.decreaseTime }
         /> : null }
         <button onClick={ this.nextQuestion } type="button">Próxima</button>
       </div>
