@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { saveToken } from '../services/token';
+import { addEmail } from '../actions';
 
 class Login extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.disabled = this.disabled.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.goToConf = this.goToConf.bind(this);
   }
 
   handleChange({ target }) {
@@ -21,6 +24,11 @@ class Login extends Component {
     this.setState({
       [name]: value,
     }, this.disabled);
+  }
+
+  goToConf() {
+    const { history } = this.props;
+    history.push('/conf');
   }
 
   disabled() {
@@ -33,10 +41,13 @@ class Login extends Component {
   }
 
   async handleClick() {
+    const { history, saveUser } = this.props;
+
     await fetch('https://opentdb.com/api_token.php?command=request')
       .then((response) => response.json())
       .then((response) => saveToken(response.token));
-    const { history } = this.props;
+
+    saveUser(this.state);
     history.push('/main');
   }
 
@@ -73,6 +84,14 @@ class Login extends Component {
         >
           Jogar
         </button>
+        <button
+          type="button"
+          name="config"
+          data-testid="btn-settings"
+          onClick={ this.goToConf }
+        >
+          Configurações
+        </button>
       </form>
     );
   }
@@ -82,6 +101,11 @@ Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  saveUser: PropTypes.func.isRequired,
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  saveUser: (state) => dispatch(addEmail(state)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
