@@ -1,4 +1,4 @@
-import { ADD_QUESTIONS, ADD_SCORE } from '../actions';
+import { ADD_QUESTIONS, ADD_SCORE, CLEAR_STORE } from '../actions';
 
 const INITIAL_STATE = {
   questions: [],
@@ -17,6 +17,8 @@ const main = (state = INITIAL_STATE, action) => {
       ...state,
       score: state.score + action.score,
     };
+  case CLEAR_STORE:
+    return { ...INITIAL_STATE };
   default:
     return state;
   }

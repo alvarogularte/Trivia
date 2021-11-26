@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import md5 from 'crypto-js/md5';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import { addQuestions, addScore } from '../actions';
 import Question from '../components/Question';
+import { saveRanking } from '../services/token';
 
 class Main extends React.Component {
   constructor(props) {
@@ -13,8 +15,7 @@ class Main extends React.Component {
     this.nextQuestion = this.nextQuestion.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.decreaseTime = this.decreaseTime.bind(this);
-    // this.stateLocalStorage = this.stateLocalStorage.bind(this);
-
+    this.ranking = this.ranking.bind(this);
     this.state = {
       index: 0,
       click: false,
@@ -27,19 +28,7 @@ class Main extends React.Component {
     const { questionsToState } = this.props;
     await questionsToState();
     this.randomizeArrays();
-    // this.stateLocalStorage();
   }
-
-  // stateLocalStorage() {
-  //   const { gravatarEmail, name } = this.props;
-  //   const player = {
-  //     name,
-  //     assertions: 0,
-  //     score: 0,
-  //     gravatarEmail,
-  //   };
-  //   localStorage.setItem('state', JSON.stringify({ player }));
-  // }
 
   randomizeArrays() {
     const { questionsFromState } = this.props;
@@ -57,9 +46,35 @@ class Main extends React.Component {
     const four = 4;
     if (index === four) {
       const { history } = this.props;
+      this.ranking();
       history.push('/feedback');
     }
     this.setState({ index: index + 1, click: !click, second: 30 });
+  }
+
+  ranking() {
+    const ranking = JSON.parse(localStorage.getItem('ranking'));
+    const { player: {
+      name,
+      score,
+      gravatarEmail,
+    } } = JSON.parse(localStorage.getItem('state'));
+    if (ranking === null) {
+      const scoreRanking = {
+        name,
+        score,
+        picture: `https://www.gravatar.com/avatar/${md5(gravatarEmail).toString()}`,
+      };
+      saveRanking([scoreRanking]);
+    } else {
+      const newRanking = [...ranking, {
+        name,
+        score,
+        picture: `https://www.gravatar.com/avatar/${md5(gravatarEmail).toString()}`,
+      }];
+      saveRanking(newRanking);
+    }
+    console.log(ranking);
   }
 
   handleClick({ target: { value } }) {
@@ -77,9 +92,6 @@ class Main extends React.Component {
       const ten = 10;
       const earnedPoints = ten + (second * scoreValues[difficulty]);
       const then = JSON.parse(localStorage.getItem('state'));
-
-      console.log(then.player.score);
-
       const now = {
         player: {
           ...then.player,
@@ -133,8 +145,6 @@ Main.propTypes = {
   questionsToState: PropTypes.func.isRequired,
   score: PropTypes.func.isRequired,
   history: PropTypes.isRequired,
-  // gravatarEmail: PropTypes.string.isRequired,
-  // name: PropTypes.string.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
