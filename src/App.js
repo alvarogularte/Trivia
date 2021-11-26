@@ -5,6 +5,7 @@ import Main from './pages/Main';
 import FeedBack from './pages/FeedBack';
 import './App.css';
 import Conf from './pages/Conf';
+import Ranking from './pages/Ranking';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route exact path="/main" component={ Main } />
       <Route exact path="/conf" component={ Conf } />
       <Route exact path="/feedback" component={ FeedBack } />
+      <Route exact path="/ranking" component={ Ranking } />
     </Switch>
   );
 }
