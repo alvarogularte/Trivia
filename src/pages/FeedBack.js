@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { clearStore } from '../actions';
 import Header from '../components/Header';
 import FeedBackContent from '../components/FeedBackContent';
 
@@ -11,7 +13,8 @@ class FeedBack extends React.Component {
   }
 
   playAgain() {
-    const { history } = this.props;
+    const { history, clearScore } = this.props;
+    clearScore();
     history.push('/');
   }
 
@@ -47,6 +50,11 @@ FeedBack.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  clearScore: PropTypes.func.isRequired,
 };
 
-export default FeedBack;
+const mapDispatchToProps = (dispatch) => ({
+  clearScore: () => dispatch(clearStore()),
+});
+
+export default connect(null, mapDispatchToProps)(FeedBack);
