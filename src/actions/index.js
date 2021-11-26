@@ -1,5 +1,6 @@
 export const ADD_EMAIL = 'ADD_EMAIL';
 export const ADD_QUESTIONS = 'ADD_QUESTIONS';
+export const ADD_SCORE = 'ADD_SCORE';
 
 export const addEmail = (state) => ({
   type: ADD_EMAIL,
@@ -21,3 +22,5 @@ export function addQuestions() {
     })
   );
 }
+
+export const addScore = (score) => ({ type: ADD_SCORE, score });

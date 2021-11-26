@@ -42,12 +42,23 @@ class Login extends Component {
 
   async handleClick() {
     const { history, saveUser } = this.props;
+    const { username: name, email: gravatarEmail } = this.state;
+    console.log(name);
 
     await fetch('https://opentdb.com/api_token.php?command=request')
       .then((response) => response.json())
       .then((response) => saveToken(response.token));
 
     saveUser(this.state);
+
+    const player = {
+      name,
+      assertions: 0,
+      score: 0,
+      gravatarEmail,
+    };
+    localStorage.setItem('state', JSON.stringify({ player }));
+
     history.push('/main');
   }
 
