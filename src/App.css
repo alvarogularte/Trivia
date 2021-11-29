@@ -81,9 +81,26 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.login label input {
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+
 .buttons {
   display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
+  justify-content: center;
   width: 100%;
+}
+
+.buttons button {
+  margin: 10px;
+  margin-bottom: -5px;
+}
+
+.trivia {
+  left: 50%;
+  max-width: 50%;
+  position: absolute;
+  top: 35%;
+  transform: translate(-50%, -50%);
 }
