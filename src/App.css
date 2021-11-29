@@ -104,3 +104,37 @@ body {
   top: 35%;
   transform: translate(-50%, -50%);
 }
+
+@media only screen and ( min-width : 720px ) {
+
+  body {
+    background-size: 4000px;
+  }
+
+  .trivia {
+    max-width: 30%;
+  }
+
+  .login {
+    min-width: 40%;
+  }
+
+  .login input {
+    max-width: 30%;
+  }
+
+  .email {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and ( min-width : 721px ) {
+
+  .login {
+    min-width: 25%;
+  }
+
+  .login input {
+    max-width: 100%;
+  }
+}

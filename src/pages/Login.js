@@ -79,7 +79,7 @@ class Login extends Component {
                 data-testid="input-player-name"
               />
             </label>
-            <label htmlFor="input-gravatar-email">
+            <label htmlFor="input-gravatar-email" className="email">
               E-mail:
               <input
                 type="email"
