@@ -1,8 +1,67 @@
 body {
-  background-image: url('https://i.imgur.com/7opQARU.jpg');
+  background: url('https://i.imgur.com/B8LvM7a.jpg') no-repeat center fixed;
   background-position-x: center;
   background-position-y: center;
-  background-size: 3000px;
+  background-size: cover;
+}
+
+html {
+
+  --font-size: 1.2rem;
+
+  --color: #6eb967;
+
+  --color-light: #a6d1a2;
+
+  --color-dark: #233a21;
+
+  --radius: 0.2rem;
+}
+
+button {
+  background: var(--color);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--color-dark);
+  cursor: pointer;
+  margin-top: 0.2rem;
+  padding: 0.5rem;
+  transition: 0.1s;
+}
+
+button:hover, button:focus {
+  background: var(--color);
+  box-shadow: 0 0 0 3px var(--color-light) , 0 0 0 4px var(--color);
+  outline: none;
+}
+
+button:active {
+  box-shadow: 0 0 0 3px var(--color) , 0 0 0 4px var(--color);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+
+
+.green {
+  border-color: rgb(6, 240, 15);
+  border-style: solid;
+  border-width: 3px;
+}
+
+.red {
+  background-color: indianred;
+  border-color: red;
+  border-style: solid;
+  border-width: 3px;
+}
+
+.red:focus, .red:hover {
+  background-color: red;
+  box-shadow: 0 0 0 3px red , 0 0 0 4px red;
+  color: black;
 }
 
 .App {
@@ -12,14 +71,6 @@ body {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-.red-border {
-  border: 1px solid red;
-}
-
-.green-border {
-  border: 1px solid green;
 }
 
 @media ( prefers-reduced-motion : no-preference ) {
@@ -64,7 +115,7 @@ body {
   }
 }
 
-.login {
+.login, .card {
   align-items: center;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.404);
@@ -79,6 +130,23 @@ body {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.card {
+  flex-direction: column;
+}
+
+.card span {
+  margin: 10px;
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.card div span {
+  align-self: center;
 }
 
 .login label input {
@@ -105,11 +173,36 @@ body {
   transform: translate(-50%, -50%);
 }
 
-@media only screen and ( min-width : 720px ) {
+.header {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.596);
+  border-radius: 0 0 10px 10px;
+  color: white;
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+}
 
-  body {
-    background-size: 4000px;
-  }
+.header img {
+  border-radius: 0 0 0 10px;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 12px;
+  margin-top: -10px;
+}
+
+.points {
+  margin-top: -5px;
+}
+
+.header-info p {
+  margin-left: 5px;
+}
+
+@media only screen and ( min-width : 720px ) {
 
   .trivia {
     max-width: 30%;

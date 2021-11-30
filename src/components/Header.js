@@ -7,14 +7,20 @@ class Header extends React.Component {
   render() {
     const { email, username, score } = this.props;
     return (
-      <div>
+      <div className="header">
         <img
           src={ `https://www.gravatar.com/avatar/${md5(email).toString()}` }
           data-testid="header-profile-picture"
           alt="userAvatar"
         />
-        <p data-testid="header-player-name">{ username }</p>
-        <p data-testid="header-score">{ score }</p>
+        <div className="header-info">
+          <p data-testid="header-player-name">{ username }</p>
+          <p data-testid="header-score" className="points">
+            { score }
+            {' '}
+            Pontos
+          </p>
+        </div>
       </div>
     );
   }

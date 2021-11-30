@@ -13,17 +13,19 @@ class Question extends React.Component {
           <h4 data-testid="question-category">{ question.category }</h4>
           <p data-testid="question-text">{ question.question }</p>
         </div>
-        { allQuestions.map((element, key) => (
-          <Answers
-            correct={ question.correct_answer }
-            answer={ element }
-            color={ element === question.correct_answer ? 'green' : 'red' }
-            key={ key }
-            index={ index }
-            handleClick={ handleClick }
-            click={ click }
-          />
-        )) }
+        <div className="answers">
+          { allQuestions.map((element, key) => (
+            <Answers
+              correct={ question.correct_answer }
+              answer={ element }
+              color={ element === question.correct_answer ? 'green' : 'red' }
+              key={ key }
+              index={ index }
+              handleClick={ handleClick }
+              click={ click }
+            />
+          )) }
+        </div>
         <span>
           { click ? <Stopwatch second={ second } /> : <Stopwatch
             decreaseTime={ decreaseTime }
