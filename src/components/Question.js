@@ -10,7 +10,11 @@ class Question extends React.Component {
     return (
       <div>
         <div>
-          <h4 data-testid="question-category">{ question.category }</h4>
+          <h4 data-testid="question-category">
+            Category
+            {' '}
+            { question.category }
+          </h4>
           <p data-testid="question-text">{ question.question }</p>
         </div>
         <div className="answers">
