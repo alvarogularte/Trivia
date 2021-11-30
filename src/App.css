@@ -234,6 +234,25 @@ button:disabled {
   .email {
     margin-left: 10px;
   }
+
+  .answers {
+    flex-wrap: wrap;
+    height: 100px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .answers button {
+    margin: 5px;
+  }
+
+  .card {
+    font-size: x-large;
+  }
+
+  .card h4 {
+    font-size: xx-large;
+  }
 }
 
 @media only screen and ( min-width : 721px ) {
