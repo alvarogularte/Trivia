@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveToken } from '../services/token';
 import { addEmail } from '../actions';
+import trivia from '../images/trivia.png';
 
 class Login extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class Login extends Component {
     const { disabled } = this.state;
     return (
       <div>
-        <img src="./trivia.png" alt="logo" className="trivia" />
+        <img src={ trivia } alt="logo" className="trivia" />
         <div className="login">
           <form>
             <label htmlFor="login">
