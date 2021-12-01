@@ -63,47 +63,53 @@ class Login extends Component {
   }
 
   render() {
-    const { email, disabled } = this.state;
+    const { disabled } = this.state;
     return (
-      <form>
-        <label htmlFor="login">
-          Usuário:
-          <input
-            type="text"
-            name="username"
-            id="login"
-            onChange={ this.handleChange }
-            data-testid="input-player-name"
-          />
-        </label>
-        <label htmlFor="input-gravatar-email">
-          E-mail:
-          <input
-            type="email"
-            name="email"
-            value={ email }
-            onChange={ this.handleChange }
-            data-testid="input-gravatar-email"
-          />
-        </label>
-        <button
-          type="button"
-          name="disabled"
-          disabled={ disabled }
-          data-testid="btn-play"
-          onClick={ this.handleClick }
-        >
-          Jogar
-        </button>
-        <button
-          type="button"
-          name="config"
-          data-testid="btn-settings"
-          onClick={ this.goToConf }
-        >
-          Configurações
-        </button>
-      </form>
+      <div>
+        <img src="./trivia.png" alt="logo" className="trivia" />
+        <div className="login">
+          <form>
+            <label htmlFor="login">
+              Usuário:
+              <input
+                type="text"
+                name="username"
+                id="login"
+                onChange={ this.handleChange }
+                data-testid="input-player-name"
+              />
+            </label>
+            <label htmlFor="input-gravatar-email" className="email">
+              E-mail:
+              <input
+                type="email"
+                name="email"
+                onChange={ this.handleChange }
+                data-testid="input-gravatar-email"
+              />
+            </label>
+            <div className="buttons">
+              <button
+                type="button"
+                name="disabled"
+                disabled={ disabled }
+                data-testid="btn-play"
+                onClick={ this.handleClick }
+              >
+                Jogar
+              </button>
+              <button
+                type="button"
+                name="config"
+                data-testid="btn-settings"
+                onClick={ this.goToConf }
+              >
+                Configurações
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     );
   }
 }

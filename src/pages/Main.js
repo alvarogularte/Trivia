@@ -118,23 +118,27 @@ class Main extends React.Component {
     return (
       <div>
         <Header />
-        { questionsFromState && randomizedArrays.length ? <Question
-          question={ questionsFromState[index] }
-          click={ click }
-          index={ index }
-          allQuestions={ randomizedArrays[index] }
-          handleClick={ this.handleClick }
-          second={ second }
-          decreaseTime={ this.decreaseTime }
-        /> : null }
-        <button
-          onClick={ this.nextQuestion }
-          hidden={ !click }
-          type="button"
-          data-testid="btn-next"
-        >
-          Próxima
-        </button>
+        <div className="card">
+          { questionsFromState && randomizedArrays.length ? <Question
+            question={ questionsFromState[index] }
+            click={ click }
+            index={ index }
+            allQuestions={ randomizedArrays[index] }
+            handleClick={ this.handleClick }
+            second={ second }
+            decreaseTime={ this.decreaseTime }
+          /> : null }
+          <div>
+            <button
+              onClick={ this.nextQuestion }
+              hidden={ !click }
+              type="button"
+              data-testid="btn-next"
+            >
+              Próxima
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

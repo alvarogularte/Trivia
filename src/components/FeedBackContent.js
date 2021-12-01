@@ -32,9 +32,13 @@ class FeedBackContent extends React.Component {
         </span>
         <div data-testid="feedback-total-score">
           { score }
+          {' '}
+          Pontos
         </div>
         <div data-testid="feedback-total-question">
           { assertions }
+          {' '}
+          Respostas corretas
         </div>
       </>
     );
