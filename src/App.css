@@ -1,5 +1,6 @@
 body {
   background: url('https://i.imgur.com/B8LvM7a.jpg') no-repeat center fixed;
+  background-color: rgb(59 171 123);
   background-position-x: center;
   background-position-y: center;
   background-size: cover;
@@ -115,21 +116,33 @@ button:disabled {
   }
 }
 
-.login, .card, .feedback {
+.ranking-card, .login, .card, .feedback {
   align-items: center;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.404);
   border-radius: 10px;
+  box-shadow: 0 6px 12px 1px rgba(0, 0, 0, 0.34);
   color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.login, .card, .feedback {
   left: 50%;
   max-width: 80%;
   padding: 20px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.ranking-card {
+  margin: 10px;
+}
+
+.ranking-card img {
+  border-radius: 100%;
 }
 
 .feedback {
@@ -192,10 +205,25 @@ button:disabled {
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.596);
   border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 12px 1px rgba(0, 0, 0, 0.34);
   color: white;
   display: flex;
   height: 4rem;
   justify-content: space-between;
+}
+
+.ranking-title {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.596);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 12px 1px rgba(0, 0, 0, 0.34);
+  color: white;
+  height: 4rem;
+}
+
+.ranking-title h1 {
+  margin-top: auto;
+  padding-top: 10px;
 }
 
 .header img {
@@ -217,7 +245,67 @@ button:disabled {
   margin-left: 5px;
 }
 
+.ranking-main {
+  color: white;
+  text-align: center;
+}
+
+.ranking-main button {
+  background-color: rgba(0, 0, 0, 0.596);
+  color: white;
+  margin-bottom: 20px;
+}
+
+.ranking-name {
+  width: 1rem;
+}
+
+.\31:before, .\32:before, .\33:before {
+  background: url('https://i.imgur.com/FYWcbxl.png');
+  background-size: cover;
+  content: '';
+  height: 40px;
+  margin-left: 20px;
+  margin-top: -10px;
+  position: absolute;
+  width: 40px;
+}
+
+.\32:before {
+  background: url('https://i.imgur.com/GDALett.png');
+  background-size: cover;
+  content: '';
+  height: 40px;
+  margin-left: 20px;
+  margin-top: -10px;
+  position: absolute;
+  width: 40px;
+}
+
+.\33:before {
+  background: url('https://i.imgur.com/iK4sQeC.png');
+  background-size: cover;
+  content: '';
+  height: 40px;
+  margin-left: 20px;
+  margin-top: -10px;
+  position: absolute;
+  width: 40px;
+}
+
 @media only screen and ( min-width : 720px ) {
+
+  .ranking-list {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ranking-card {
+    width: 80%;
+  }
 
   .trivia {
     max-width: 30%;
@@ -253,6 +341,10 @@ button:disabled {
   .card h4 {
     font-size: xx-large;
   }
+
+  .\31:before, .\32:before, .\33:before {
+    margin-left: -40px;
+  }
 }
 
 @media only screen and ( min-width : 721px ) {
@@ -265,3 +357,6 @@ button:disabled {
     max-width: 100%;
   }
 }
+
+/* how to add a icon on CSS class found heare
+https://stackoverflow.com/questions/29576527/adding-icon-image-to-css-class-for-html-elements/29576585 */

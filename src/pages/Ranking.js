@@ -26,15 +26,24 @@ class Ranking extends React.Component {
       } return 0;
     });
     return (
-      <div>
-        <div data-testid="ranking-title">
-          Ranking:
+      <div className="ranking-main">
+        <div data-testid="ranking-title" className="ranking-title">
+          <h1>Ranking</h1>
         </div>
-        <div>
+        <div className="ranking-list">
           { sortedRanking.map(({ name, picture, score }, index) => (
-            <div key={ index }>
+            <div key={ index } className="ranking-card">
+              <p className={ index + 1 }>
+                { index + 1 }
+                º
+              </p>
               <img src={ picture } alt={ name } />
-              <p data-testid={ `player-name-${index}` }>{ name }</p>
+              <p
+                data-testid={ `player-name-${index}` }
+                className="ranking-name"
+              >
+                { name }
+              </p>
               <p data-testid={ `player-score-${index}` }>{ score }</p>
             </div>
           )) }
@@ -44,7 +53,7 @@ class Ranking extends React.Component {
           data-testid="btn-go-home"
           onClick={ this.goHome }
         >
-          Retornar
+          Voltar ao inicio
 
         </button>
       </div>
