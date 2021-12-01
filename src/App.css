@@ -1,5 +1,5 @@
 body {
-  background: url('https://i.imgur.com/B8LvM7a.jpg') no-repeat center fixed;
+  background: url('./images/10.jpg') no-repeat center fixed;
   background-color: rgb(59 171 123);
   background-position-x: center;
   background-position-y: center;
@@ -261,7 +261,7 @@ button:disabled {
 }
 
 .\31:before, .\32:before, .\33:before {
-  background: url('https://i.imgur.com/FYWcbxl.png');
+  background: url('./images/Gold.png');
   background-size: cover;
   content: '';
   height: 40px;
@@ -272,7 +272,7 @@ button:disabled {
 }
 
 .\32:before {
-  background: url('https://i.imgur.com/GDALett.png');
+  background: url('./images/Silver.png');
   background-size: cover;
   content: '';
   height: 40px;
@@ -283,7 +283,7 @@ button:disabled {
 }
 
 .\33:before {
-  background: url('https://i.imgur.com/iK4sQeC.png');
+  background: url('./images/Bronze.png');
   background-size: cover;
   content: '';
   height: 40px;
@@ -359,4 +359,5 @@ button:disabled {
 }
 
 /* how to add a icon on CSS class found heare
-https://stackoverflow.com/questions/29576527/adding-icon-image-to-css-class-for-html-elements/29576585 */
+https://stackoverflow.com/questions/29576527/
+adding-icon-image-to-css-class-for-html-elements/29576585 */
