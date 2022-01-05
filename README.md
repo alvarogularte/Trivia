@@ -1,6 +1,8 @@
 # Descrição do projeto
 Este projeto foi desenvolvido como um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano). O desenvolvimento foi realizado em grupo utilizando um quadro Kanban para a divisão das funcionalidades a serem desenvolvidas.
 
+**Deploy do projeto:** https://trivia-project-rouge.vercel.app/
+
 ## Tecnologias utilizadas
 - React
 - Redux
